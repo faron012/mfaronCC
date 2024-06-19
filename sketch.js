@@ -11,7 +11,6 @@ function preload() {
   comicFont = 'Comic Sans MS';
 }
 
-
 function setup() {
   createCanvas(1920, 1080);
 
@@ -28,12 +27,19 @@ function setup() {
   cancelButton.style('opacity', '0.4');
   cancelButton.style('font-family', comicFont);  // Set font family
 
+  // Add mousePressed event to cancelButton
+  cancelButton.mousePressed(() => {
+    if (timer <= -10) {
+      window.location.href = "https://jbaranczuk123.github.io/wielepytan/";
+    }
+  });
+
   // Start the timer
   interval = setInterval(updateTimer, 1000);
 }
 
 function draw() {
-  // Blink the screen red and yellow if timer is less than or equal to -15
+  // Blink the screen red and yellow if timer is less than or equal to -10
   if (timer <= -10) {
     if (frameCount % 30 < 15) {
       background(135, 55, 255);  // Fioletowy background
